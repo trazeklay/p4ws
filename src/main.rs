@@ -45,7 +45,7 @@ async fn main() {
     let spectators_filter = warp::any().map(move || spectators.clone());
     let game_filter = warp::any().map(move || game_state.clone());
 
-    let ws_route = warp::path("ws")
+    let ws_route = warp::path("p4")
         .and(warp::ws())
         .and(clients_filter)
         .and(spectators_filter)
@@ -57,7 +57,7 @@ async fn main() {
     let routes = ws_route.with(warp::cors().allow_any_origin());
 
     println!(
-        "🚀 Serveur WebSocket en ligne sur ws://127.0.0.1:{}/ws",
+        "🚀 Serveur WebSocket en ligne sur ws://0.0.0.0:{}/ws",
         port
     );
     warp::serve(routes).run(([0, 0, 0, 0], port)).await;
