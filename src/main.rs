@@ -57,7 +57,7 @@ async fn main() {
     let routes = ws_route.with(warp::cors().allow_any_origin());
 
     println!(
-        "🚀 Serveur WebSocket en ligne sur ws://0.0.0.0:{}/ws",
+        "🚀 Serveur WebSocket en ligne sur ws://0.0.0.0:{}/p4",
         port
     );
     warp::serve(routes).run(([0, 0, 0, 0], port)).await;
